@@ -10,8 +10,11 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+//data import
 import User from "./models/User.js";
-import {dataUser} from "./data/index.js";
+import Product from "./models/Product.js"
+import ProductStat from "./models/ProductStat.js"
+import {dataUser,dataProduct,dataProductStat} from "./data/index.js";
 
 /*Configure*/
 dotenv.config();
@@ -37,8 +40,11 @@ mongoose.connect(process.env.MONGO_URL,{
     useUnifiedTopology: true,
 }).then(()=>{
     app.listen(PORT, ()=>console.log(`Server Port: ${PORT}`));
+    console.log(dataProduct);
     //Add only Once
-   // User.insertMany(dataUser);
+   //User.insertMany(dataUser);
+   //Product.insertMany(dataProduct);
+   //ProductStat.insertMany(dataProductStat);
 }).catch((error) => {
     console.error("MongoDB connection error:", error.message);
 });
